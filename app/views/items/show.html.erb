@@ -1,0 +1,29 @@
+<div>
+  <%= @item.name %>
+</div>
+<div>
+  Description: <%= @item.description %>
+</div>
+<div>
+  Minimum Price: $<%= @item.minimum_price %>
+</div>
+<div>
+  <% if @item.image.present? %>
+    <%= image_tag(@item.image, width: 500) %>
+  <% end %>
+</div>
+<div>
+  The auction will end on <%= @item.expiration_date %>.
+</div>
+
+<div>
+  The current highest bid on this item is:
+  <%= @item.bids.maximum("amount")%>
+</div>
+
+Place a bid on this item
+<%= form_for [@item, @bid] do |form| %>
+  <%= form.label :amount, "Bid Amount" %>
+  <%= form.text_field :amount, placeholder: "Amount" %>
+  <%= form.submit "Enter Bid" %>
+<% end %>

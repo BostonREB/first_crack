@@ -1,0 +1,16 @@
+<h2> Available Items</h2>
+
+<%= Item.find_each do |item| %>
+  <div>
+    <%= link_to item.name, item %>
+  </div>
+  <div>
+    <%= item.description %>
+  </div>
+  <div>
+    <%= item.bids.maximum("amount") %>
+  </div>
+  <div>
+    <%= item.expiration_date %>
+  </div>
+<% end %>

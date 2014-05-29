@@ -1,6 +1,13 @@
 FirstCrack::Application.routes.draw do
 
   root 'homes#index'
+
+  resources :users, only: [:show]
+
+  resources :items do
+    resources :bids, only: [:new, :create, :edit, :update, :destroy]
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

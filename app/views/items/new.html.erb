@@ -1,0 +1,26 @@
+<h4>What do you wish to sell?</h4>
+
+<%= form_for(@item) do |form| %>
+  <div>
+    <%= form.label :name, "Item Name:" %>
+    <%= form.text_field :name, placeholder: "Item name" %>
+  </div>
+  <div>
+    <%= form.label :description, "Description:" %>
+    <%= form.text_area :description, placeholder: "Description" %>
+  </div>
+  <div>
+    <%= form.label :image, "Image" %>
+    <%= form.text_field :image, placeholder: "Image URL" %>
+  </div>
+  <div>
+    <%= form.label :minimum_price, "Minimum Price:" %>
+    <%= form.text_field :minimum_price, placeholder: "Minimum Price" %>
+  </div>
+  <div>
+    <%= form.label :expiration_date, "Expiration Date:" %>
+    <%= form.text_field :expiration_date, placeholder: "MM/DD/YYYY" %>
+  </div>
+    <%= form.submit "Add Item" %>
+<% end %>
+
