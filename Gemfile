@@ -34,6 +34,10 @@ end
 
 gem 'clearance'
 
+group :development do
+  gem 'pry-rails'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

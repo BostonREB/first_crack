@@ -17,13 +17,22 @@
 </div>
 
 <div>
-  The current highest bid on this item is:
-  <%= @item.bids.maximum("amount")%>
+  <% if @item.bids.count == 0 %>
+    There are currently no bids
+  <% else %>
+    The current highest bid on this item is:
+    $<%= @item.bids.maximum("amount")%>
+  <% end %>
 </div>
 
-Place a bid on this item
-<%= form_for [@item, @bid] do |form| %>
-  <%= form.label :amount, "Bid Amount" %>
-  <%= form.text_field :amount, placeholder: "Amount" %>
-  <%= form.submit "Enter Bid" %>
+<% if current_user.id != @item.user_id %>
+  Place a bid on this item
+
+  <%= form_for [@item, @bid] do |form| %>
+    <%= render "form_errors", target: @bid %>
+    <%= form.label :amount, "Bid Amount" %>
+    <%= form.text_field :amount, placeholder: "Amount" %>
+    <%= form.submit "Enter Bid" %>
+  <% end %>
 <% end %>
+

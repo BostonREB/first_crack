@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20140528213811) do
   create_table "bids", force: true do |t|
     t.integer  "user_id"
     t.integer  "item_id"
-    t.integer  "amount"
+    t.integer  "amount",     default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

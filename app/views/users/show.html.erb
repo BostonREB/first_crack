@@ -8,11 +8,17 @@
 <% current_user.items.each do |item| %>
   <div>
     <h4><%= link_to item.name, item %></h4>
-  </div>
-  <div>
-    Most recent bid: $ <%= item.bids.maximum("amount") %>
-  </div>
-  <div>
+    Highest current bid: $ <%= item.bids.maximum("amount") %>
     Auction ends on <%= item.expiration_date %>
   </div>
 <% end %>
+
+<h4>You have bid on the following items:</h4>
+
+<% @user_bidded_on_items.each do |item| %>
+  <div>
+    <%= link_to item.name, item %>
+    The highest current bid on this item is $<%= item.bids.maximum("amount") %>
+  </div>
+<% end %>
+

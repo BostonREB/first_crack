@@ -3,7 +3,11 @@ class BidsController < ApplicationController
   def create
     @item = Item.find(params[:item_id])
     @bid = @item.bids.create(bid_params)
-    redirect_to @item
+    if @bid.valid?
+      redirect_to @item
+    else
+      render "items/show"
+    end
   end
 
   private
