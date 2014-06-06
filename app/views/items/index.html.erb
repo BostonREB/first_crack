@@ -1,6 +1,6 @@
 <h2> Available Items</h2>
 
-<%= Item.find_each do |item| %>
+<%= @items.find_each do |item| %>
   <div>
     <%= link_to item.name, item %>
   </div>
